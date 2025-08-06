@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:28:23 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/06 16:21:42 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/06 17:53:43 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ typedef struct s_map
 {
 	int			height;
 	int			width;
-	int			player;
-	int			collectable;
-	int			exit;
+	int			p;
+	int			c;
+	int			e;
 	int			empty_space;
 	char		**coordinate;
 }				t_map;
@@ -65,7 +65,7 @@ typedef struct s_game
 	t_sprite	*sprite;
 }				t_game;
 
-int			exit_game(t_game *game);
+int				exit_game(t_game *game);
 void			free_imgs(t_game *game);
 int				key_press(int key, t_game *game);
 int				player_movement(t_game *game);
@@ -82,5 +82,5 @@ void			is_rectangular(char *s, t_game *game);
 void			map_validation(t_game *game, char *filename);
 void			free_map(t_game *game);
 void			is_closed(t_game *game);
-
+void			char_check(t_game *game);
 #endif
