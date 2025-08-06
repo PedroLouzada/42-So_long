@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:27:56 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/04 20:34:44 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/06 15:17:59 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 		map_validation(&game, av[1]);
 		game_start(&game);
 		mlx_loop(game.mlx);
-		free_game(&game);
+		exit_game(&game);
 	}
 	return (0);
 }
