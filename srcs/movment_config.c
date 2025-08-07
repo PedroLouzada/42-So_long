@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image_treatment.c                                  :+:      :+:    :+:   */
+/*   movment_config.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/26 18:02:11 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/07 20:16:07 by pbongiov         ###   ########.fr       */
+/*   Created: 2025/08/07 18:54:30 by pbongiov          #+#    #+#             */
+/*   Updated: 2025/08/07 18:55:19 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void print_images(t_game *game)
+int	key_press(int key, t_game *game)
 {
-	mlx_clear_window(game->mlx, game->window);
-	create_map(game);
-	mlx_put_image_to_window(game->mlx, game->window, game->sprite->player, game->player.x, game->player.y);
+	game->keys[key] = 1;
+	if (key == ESC)
+		exit_game(game);
+	return (0);
+}
+
+int	key_realease(int key, t_game *game)
+{
+	game->keys[key] = 0;
+	return (0);
+}
+
+unsigned long	get_time(void)
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }

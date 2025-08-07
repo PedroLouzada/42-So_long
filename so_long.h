@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:28:23 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/07 18:46:48 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/07 20:28:13 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,27 +64,34 @@ typedef struct s_game
 	t_player	player;
 	t_sprite	*sprite;
 }				t_game;
-
+//==================== LEAK HANDLING ===============================
 int				exit_game(t_game *game);
 void			free_imgs(t_game *game);
+void			error_msg(t_game *game);
+void			free_map(t_game *game);
+//======================= MOVMENT ==================================
 int				key_press(int key, t_game *game);
 int				player_movement(t_game *game);
 int				key_realease(int key, t_game *game);
-int				ft_strlen(char *s);
 unsigned long	get_time(void);
-void			print_images(t_game *game);
-void			game_start(t_game *game);
-char			*get_next_line(int fd);
-void			error_msg(t_game *game);
+//======================= MAP PARSING ==============================
+int				ft_strlen(char *s);
 void			row_and_col_len(t_game *game, char *filename);
 void			map_initialize(t_game *game, char *filename);
 void			map_input(t_game *game, char *filename);
 void			is_rectangular(char *s, t_game *game);
 void			map_validation(t_game *game, char *filename);
-void			free_map(t_game *game);
 void			is_closed(t_game *game);
 void			char_check_before(t_game *game);
 void			char_check_after(t_game *game);
-void			flood_fill(t_game *game);
+void			flood_fill(char **map, int x, int y);
 void			is_berfile(t_game *game, char *filename);
+void			locate_player(t_game *game);
+//======================== IMAGES ==================================
+void			print_images(t_game *game);
+void			create_map(t_game *game);
+//====================== GAME GENERAL ==============================
+void			game_start(t_game *game);
+char			*get_next_line(int fd);
+
 #endif

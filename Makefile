@@ -6,13 +6,16 @@
 #    By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 17:25:21 by pbongiov          #+#    #+#              #
-#    Updated: 2025/08/07 18:28:19 by pbongiov         ###   ########.fr        #
+#    Updated: 2025/08/07 20:42:58 by pbongiov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRCS_FILES = get_next_line.c so_long.c utils.c player_config.c map_treatment.c flood_fill.c map_treatment_utils.c map_treatment_utils_2.c  image_treatment.c
+SRCS_FILES = get_next_line.c so_long.c utils.c player_config.c \
+			 map_treatment.c map_treatment_utils.c \
+			 map_treatment_utils_2.c  image_treatment.c movment_config.c \
+			 leak_handling.c print_map.c \
 
 SRCS_DIR = srcs
 
@@ -47,6 +50,6 @@ fclean:		clean
 re:		fclean 	all
 
 r:
-	make re && clear && ./so_long
+	make re && clear && ./so_long  teste.ber
 
 .PHONY : all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:31:08 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/07 18:49:24 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/07 20:43:34 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,36 +66,45 @@ void	map_input(t_game *game, char *filename)
 
 void	locate_player(t_game *game)
 {
-	int	i;
-	int	j;
+	int	y;
+	int	x;
 
-	i = 0;
-	j = 0;
-	while (game->map.coordinate[i])
+	y = 0;
+	while (game->map.coordinate[y])
 	{
-		j = 0;
-		while (game->map.coordinate[i][j])
+		x = 0;
+		while (game->map.coordinate[y][x])
 		{
-			if (game->map.coordinate[i][j] == 'P')
+			if (game->map.coordinate[y][x] == 'P')
 			{
-				game->player.x = j;
-				game->player.y = i;
+				game->player.x = x;
+				game->player.y = y;
+				break;
 			}
-			j++;
+			x++;
 		}
-		i++;
+		y++;
 	}
 }
-
-static void print_map(char **arr)
+void	flood_fill(char **map, int x, int y)
 {
-    int i = 0;
-	
-    while (arr[i])
-    {
-        printf("%s\n", arr[i]);
-        i++;
-    }
+	char c;
+
+	c = map[y][x];
+	if (c == '1' || c == 'F' || c == 'B' || c == 'A')
+		return ;
+	if (c == '0')
+		map[y][x] = 'A';
+	else if (c == 'C')
+		map[y][x] = 'B';
+	else if (c == 'E')
+		map[y][x] = 'F';
+	else
+		map[y][x] = 'A';
+	flood_fill(map, x + 1, y);
+	flood_fill(map, x - 1, y);
+	flood_fill(map, x, y + 1);
+	flood_fill(map, x, y - 1);
 }
 
 void	map_validation(t_game *game, char *filename)
@@ -105,6 +114,6 @@ void	map_validation(t_game *game, char *filename)
 	is_closed(game);
 	char_check_before(game);
 	locate_player(game);
-	flood_fill(game);
+	flood_fill(game->map.coordinate, game->player.x, game->player.y);
 	char_check_after(game);
 }
