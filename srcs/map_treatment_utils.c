@@ -6,27 +6,17 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:35:54 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/06 18:09:54 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/07 18:46:39 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int ft_strlen(char *s)
+void	row_and_col_len(t_game *game, char *filename)
 {
-	int i;
-
-	i = 0;
-	while (s[i] && s[i] != '\n')
-		i++;
-	return (i);
-}
-
-void row_and_col_len(t_game *game, char *filename)
-{
-	int i;
-	int fd;
-	char *s;
+	int		i;
+	int		fd;
+	char	*s;
 
 	i = 0;
 	fd = open(filename, O_RDONLY);
@@ -34,7 +24,7 @@ void row_and_col_len(t_game *game, char *filename)
 	if (!s)
 		exit_game(game);
 	game->map.width = ft_strlen(s);
-	while(s && s[0] != '\n')
+	while (s && s[0] != '\n')
 	{
 		i++;
 		free(s);
@@ -45,9 +35,9 @@ void row_and_col_len(t_game *game, char *filename)
 	game->map.height = i;
 }
 
-void is_rectangular(char *s, t_game *game)
+void	is_rectangular(char *s, t_game *game)
 {
-	static int i;
+	static int	i;
 
 	if (ft_strlen(s) < 3)
 	{
@@ -66,53 +56,41 @@ void is_rectangular(char *s, t_game *game)
 	i = ft_strlen(s);
 }
 
-void is_closed(t_game *game)
+void	is_closed(t_game *game)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	if (game->map.height < 3)
 		error_msg(game);
 	while (game->map.coordinate[0][i] && game->map.coordinate[0][i] != '\n')
 	{
-		if (game->map.coordinate[0][i] != '1'  || game->map.coordinate[game->map.height - 1][i] != '1')
+		if (game->map.coordinate[0][i] != '1'
+			|| game->map.coordinate[game->map.height - 1][i] != '1')
 			error_msg(game);
 		i++;
 	}
 	i = 0;
 	while (game->map.coordinate[i])
 	{
-		if (game->map.coordinate[i][0] != '1' || game->map.coordinate[i][game->map.width - 1] != '1')
+		if (game->map.coordinate[i][0] != '1'
+			|| game->map.coordinate[i][game->map.width - 1] != '1')
 			error_msg(game);
 		i++;
 	}
 }
 
-void char_check(t_game *game)
+void	is_berfile(t_game *game, char *filename)
 {
-	int i;
-	int j;
+	int	i;
 
-	i = 0;
-	while (game->map.coordinate[i])
-	{
-		j = 0;
-		while (game->map.coordinate[i][j])
-		{
-			if (game->map.coordinate[i][j] == 'P')
-				game->map.p++;
-			else if (game->map.coordinate[i][j] == 'C')
-				game->map.c++;
-			else if (game->map.coordinate[i][j] == 'E')
-				game->map.e++;
-			else if (game->map.coordinate[i][j] == '0')
-				game->map.empty_space++;
-			else if (game->map.coordinate[i][j] != '1' && game->map.coordinate[i][j] != '\n')
-			 	error_msg(game);
-			j++;
-		}
-		i++;
-	}
-	if (game->map.p != 1 || game->map.c == 0 || game->map.e != 1 || game->map.empty_space == 0)
+	i = ft_strlen(filename) - 4;
+	if (filename[i] != '.' && ft_strlen(filename) < 5)
+		error_msg(game);
+	if (filename[i + 1] != 'b')
+		error_msg(game);
+	if (filename[i + 2] != 'e')
+		error_msg(game);
+	if (filename[i + 3] != 'r')
 		error_msg(game);
 }

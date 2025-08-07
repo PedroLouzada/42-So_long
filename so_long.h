@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:28:23 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/06 17:53:43 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/07 18:46:48 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void			free_imgs(t_game *game);
 int				key_press(int key, t_game *game);
 int				player_movement(t_game *game);
 int				key_realease(int key, t_game *game);
+int				ft_strlen(char *s);
 unsigned long	get_time(void);
 void			print_images(t_game *game);
 void			game_start(t_game *game);
@@ -82,5 +83,8 @@ void			is_rectangular(char *s, t_game *game);
 void			map_validation(t_game *game, char *filename);
 void			free_map(t_game *game);
 void			is_closed(t_game *game);
-void			char_check(t_game *game);
+void			char_check_before(t_game *game);
+void			char_check_after(t_game *game);
+void			flood_fill(t_game *game);
+void			is_berfile(t_game *game, char *filename);
 #endif

@@ -6,13 +6,13 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:42:57 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/07/26 19:04:16 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/07 18:45:14 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static int	ft_strlen(char *s)
+static int	ft_strlenth(char *s)
 {
 	int	len;
 
@@ -35,7 +35,7 @@ static char	*buffer_clear(char *s, int f)
 	j = 0;
 	if (!f)
 	{
-		i = ft_strlen(s);
+		i = ft_strlenth(s);
 		while (s[i + j])
 		{
 			s[j] = s[i + j];
@@ -53,7 +53,7 @@ static char	*ft_strjoin(char *s1, char *s2)
 	int		j;
 	char	*str;
 
-	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	str = malloc((ft_strlenth(s1) + ft_strlenth(s2) + 1) * sizeof(char));
 	if (!str)
 		return (free(s1), NULL);
 	i = 0;

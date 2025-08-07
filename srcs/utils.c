@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 17:17:45 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/06 15:59:56 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/07 18:43:45 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	exit_game(t_game *game)
 	free_map(game);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
-	exit (0);
+	exit(0);
 }
 
 int	key_press(int key, t_game *game)
@@ -59,17 +59,21 @@ void	game_start(t_game *game)
 	mlx_loop_hook(game->mlx, player_movement, game);
 }
 
-void	free_map(t_game * game)
+void	free_map(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while (game->map.coordinate[i])
+	if (game->map.coordinate)
 	{
-		free(game->map.coordinate[i]);
-		i++;
-	}
+		while (game->map.coordinate[i])
+		{
+			free(game->map.coordinate[i]);
+			i++;
+		}
 		free(game->map.coordinate);
+	}
+	if (game->sprite)
 		free(game->sprite);
 }
 void	error_msg(t_game *game)
@@ -79,7 +83,7 @@ void	error_msg(t_game *game)
 	exit(0);
 }
 
-void free_imgs(t_game *game)
+void	free_imgs(t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->sprite->player);
 	mlx_destroy_image(game->mlx, game->sprite->floor);

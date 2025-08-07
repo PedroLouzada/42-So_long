@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:31:08 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/06 21:23:29 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/07 18:49:24 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,54 +85,8 @@ void	locate_player(t_game *game)
 		}
 		i++;
 	}
-	printf("x: %i\ny: %i\n", game->player.x, game->player.y);
 }
 
-/*void game_state(t_game *game)
-{
-	printf("--------------- game state ---------------\n");
-	printf("map:\n");
-	printf("\theight: %i\n", game->map.height);
-	printf("\twidth: %i\n", game->map.width);
-	printf("player:\n");
-	printf("\tplayer x: %i\n", game->player.x);
-	printf("\tplayer y: %i\n", game->player.y);
-	printf("--------------- game state ---------------\n");
-}*/
-
-	
-void	flood_fill(t_game *game)
-{
-	int i;
-	i = game->player.x;
-	if (game->map.coordinate[game->player.y][game->player.x + 1] == '0')
-	{
-		game->player.x += 1;
-		game->map.coordinate[game->player.y][game->player.x] = 'A';
-		flood_fill(game);
-	}
-	game->player.x = i;
-	if (game->player.x > 0 && game->map.coordinate[game->player.y][game->player.x - 1] == '0')
-	{
-		game->player.x -= 1;
-		game->map.coordinate[game->player.y][game->player.x] = 'A';
-		flood_fill(game);
-	}
-	i = game->player.y;
-	if (game->map.coordinate[game->player.y + 1][game->player.x] == '0')
-	{
-		game->player.y += 1;
-		game->map.coordinate[game->player.y][game->player.x] = 'A';
-		flood_fill(game);
-	}
-	game->player.y = i;
-	if (game->player.y > 0 && game->map.coordinate[game->player.y - 1][game->player.x] == '0')
-	{
-		game->player.y -= 1;
-		game->map.coordinate[game->player.y][game->player.x] = 'A';
-		flood_fill(game);
-	}
-}
 static void print_map(char **arr)
 {
     int i = 0;
@@ -146,10 +100,11 @@ static void print_map(char **arr)
 
 void	map_validation(t_game *game, char *filename)
 {
+	is_berfile(game, filename);
 	map_input(game, filename);
 	is_closed(game);
-	char_check(game);
+	char_check_before(game);
 	locate_player(game);
 	flood_fill(game);
-	print_map(game->map.coordinate);
+	char_check_after(game);
 }
