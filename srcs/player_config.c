@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_config.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:51:14 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/07 20:12:57 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/08 20:09:29 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 int player_movement(t_game *game)
 {
-	static unsigned long last_time;
-	unsigned long current_time;
+    static unsigned long last_time;
+    unsigned long current_time;
 
-	current_time = get_time();
-	if (current_time - last_time < 7)
-		return (0);
-	last_time = current_time;
-	if (game->keys[W])
-		game->player.y -= 1;
-	if (game->keys[A])
-		game->player.x -= 1;
-	if (game->keys[S])
-		game->player.y  += 1;
-	if (game->keys[D])
-		game->player.x += 1;
-	print_images(game);
-	return (0);
+    current_time = get_time();
+    if (current_time - last_time < 7)
+        return (0);
+    last_time = current_time;
+    if (game->keys[W] && colision_check(game, 0))
+        game->player.y -= 1;
+    if (game->keys[S] && colision_check(game, 1))
+        game->player.y += 1;
+    if (game->keys[A] && colision_check(game, 2))
+        game->player.x -= 1;
+    if (game->keys[D] && colision_check(game, 3))
+        game->player.x += 1;
+    print_images(game);
+    return (0);
 }

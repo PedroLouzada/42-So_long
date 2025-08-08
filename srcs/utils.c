@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 17:17:45 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/07 20:53:37 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/08 19:00:12 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,15 @@
 void	game_start(t_game *game)
 {
 	game->mlx = mlx_init();
-	game->window = mlx_new_window(game->mlx, 640, 480, "so_long");
+	game->window = mlx_new_window(game->mlx, game->map.width * 64, game->map.height * 64, "so_long");
+	game->sprite->exit = mlx_xpm_file_to_image(game->mlx,
+			"imgs/assets/exit.xpm", &game->sprite->w, &game->sprite->h);
 	game->sprite->floor = mlx_xpm_file_to_image(game->mlx,
-			"srcs/imgs/assets/grass.xpm", &game->sprite->w, &game->sprite->h);
+			"imgs/assets/grass.xpm", &game->sprite->w, &game->sprite->h);
+	game->sprite->wall = mlx_xpm_file_to_image(game->mlx,
+			"imgs/assets/wall.xpm", &game->sprite->w, &game->sprite->h);
 	game->sprite->player = mlx_xpm_file_to_image(game->mlx,
-			"srcs/imgs/player/default_00.xpm", &game->sprite->w, &game->sprite->h);
+			"imgs/player/default_00.xpm", &game->sprite->w, &game->sprite->h);
 	game->player.x *= 64;
 	game->player.y *= 64;
 	mlx_hook(game->window, 17, 0, exit_game, game);

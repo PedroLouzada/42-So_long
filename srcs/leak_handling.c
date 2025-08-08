@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   leak_handling.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:56:31 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/07 18:57:22 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/08 18:43:41 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	free_imgs(t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->sprite->player);
 	mlx_destroy_image(game->mlx, game->sprite->floor);
+	mlx_destroy_image(game->mlx, game->sprite->exit);
+	mlx_destroy_image(game->mlx, game->sprite->wall);
 }
 
 int	exit_game(t_game *game)
