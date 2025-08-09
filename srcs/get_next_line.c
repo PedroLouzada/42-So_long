@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:42:57 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/07 18:45:14 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/09 14:56:24 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ static int	check_newline(char *temp)
 	}
 	return (0);
 }
+
 char	*get_next_line(int fd)
 {
 	static char	s[50];

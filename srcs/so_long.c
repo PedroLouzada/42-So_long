@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:27:56 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/08 18:34:27 by pedro            ###   ########.fr       */
+/*   Updated: 2025/08/09 14:55:32 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int ac, char **av)
 {
 	static t_game	game;
+
 	if (ac == 2)
 	{
 		game.sprite = malloc(sizeof(t_sprite));

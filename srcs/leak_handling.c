@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   leak_handling.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:56:31 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/08 18:43:41 by pedro            ###   ########.fr       */
+/*   Updated: 2025/08/09 15:05:01 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../so_long.h"
+#include "../so_long.h"
 
 void	free_map(t_game *game)
 {
@@ -29,6 +29,7 @@ void	free_map(t_game *game)
 	if (game->sprite)
 		free(game->sprite);
 }
+
 void	error_msg(t_game *game)
 {
 	free_map(game);

@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:31:08 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/07 20:43:34 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/09 14:56:02 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,17 @@ void	locate_player(t_game *game)
 			{
 				game->player.x = x;
 				game->player.y = y;
-				break;
+				break ;
 			}
 			x++;
 		}
 		y++;
 	}
 }
+
 void	flood_fill(char **map, int x, int y)
 {
-	char c;
+	char	c;
 
 	c = map[y][x];
 	if (c == '1' || c == 'F' || c == 'B' || c == 'A')
