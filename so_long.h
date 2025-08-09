@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:28:23 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/09 15:04:52 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/09 15:50:48 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_player
 {
 	int			x;
 	int			y;
+	int			collect;
 	int			steps;
 }				t_player;
 

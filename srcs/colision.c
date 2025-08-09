@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 19:30:04 by pedro             #+#    #+#             */
-/*   Updated: 2025/08/09 14:55:09 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/09 16:49:17 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ static int	colision_top(t_game *game)
 	if (game->map.coordinate[px_limit][px_left] == '1'
 		|| game->map.coordinate[px_limit][px_right] == '1')
 		return (0);
+	else if (game->map.coordinate[px_limit][px_left] == 'B'
+		|| game->map.coordinate[px_limit][px_right] == 'B')
+	{
+		game->map.coordinate[(game->player.y - 1) / 64][game->player.x
+			/ 64] = 'A';
+		game->player.collect++;
+	}
 	return (1);
 }
 
@@ -39,6 +46,13 @@ static int	colision_down(t_game *game)
 	if (game->map.coordinate[px_limit][px_left] == '1'
 		|| game->map.coordinate[px_limit][px_right] == '1')
 		return (0);
+	else if (game->map.coordinate[px_limit][px_left] == 'B'
+		|| game->map.coordinate[px_limit][px_right] == 'B')
+	{
+		game->map.coordinate[(game->player.y + 1) / 64][game->player.x
+			/ 64] = 'A';
+		game->player.collect++;
+	}
 	return (1);
 }
 
@@ -54,6 +68,19 @@ static int	colision_left(t_game *game)
 	if (game->map.coordinate[px_top][px_limit] == '1'
 		|| game->map.coordinate[px_down][px_limit] == '1')
 		return (0);
+	else if (game->map.coordinate[px_top][px_limit] == 'B'
+		|| game->map.coordinate[px_down][px_limit] == 'B')
+	{
+		game->map.coordinate[game->player.y / 64][(game->player.x - 1)
+			/ 64] = 'A';
+		game->player.collect++;
+	}
+	else if (game->map.coordinate[px_top][px_limit] == 'F'
+		|| game->map.coordinate[px_down][px_limit] == 'F')
+	{
+		if (game->player.collect == game->map.c)
+			exit_game(game);
+	}
 	return (1);
 }
 
@@ -69,6 +96,19 @@ static int	colision_right(t_game *game)
 	if (game->map.coordinate[px_top][px_limit] == '1'
 		|| game->map.coordinate[px_down][px_limit] == '1')
 		return (0);
+	else if (game->map.coordinate[px_top][px_limit] == 'B'
+		|| game->map.coordinate[px_down][px_limit] == 'B')
+	{
+		game->map.coordinate[game->player.y / 64][(game->player.x + 1)
+			/ 64] = 'A';
+		game->player.collect++;
+	}
+	else if (game->map.coordinate[px_top][px_limit] == 'F'
+		|| game->map.coordinate[px_down][px_limit] == 'F')
+	{
+		if (game->player.collect == game->map.c)
+			exit_game(game);
+	}
 	return (1);
 }
 

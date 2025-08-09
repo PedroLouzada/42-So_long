@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:28:04 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/09 15:04:16 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/09 16:50:09 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ void	char_check_after(t_game *game)
 {
 	int	i;
 	int	j;
+	int	collect;
 
 	i = 0;
-	game->map.c = 0;
+	collect = 0;
 	game->map.e = 0;
 	while (game->map.coordinate[i])
 	{
@@ -26,14 +27,14 @@ void	char_check_after(t_game *game)
 		while (game->map.coordinate[i][j])
 		{
 			if (game->map.coordinate[i][j] == 'C')
-				game->map.c++;
+				collect++;
 			else if (game->map.coordinate[i][j] == 'E')
 				game->map.e++;
 			j++;
 		}
 		i++;
 	}
-	if (game->map.c != 0 || game->map.e != 0)
+	if (collect != 0 || game->map.e != 0)
 		error_msg(game);
 }
 

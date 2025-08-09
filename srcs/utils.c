@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 17:17:45 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/09 14:55:35 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/09 16:49:57 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	game_start(t_game *game)
 			"imgs/assets/grass.xpm", &game->sprite->w, &game->sprite->h);
 	game->sprite->wall = mlx_xpm_file_to_image(game->mlx,
 			"imgs/assets/wall.xpm", &game->sprite->w, &game->sprite->h);
+	game->sprite->collectable = mlx_xpm_file_to_image(game->mlx,
+			"imgs/assets/collectable.xpm", &game->sprite->w, &game->sprite->h);
 	game->sprite->player = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/default_00.xpm", &game->sprite->w, &game->sprite->h);
 	game->player.x *= 64;
