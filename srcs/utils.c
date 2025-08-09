@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 17:17:45 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/09 16:49:57 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/09 17:26:34 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	game_start(t_game *game)
 			"imgs/assets/wall.xpm", &game->sprite->w, &game->sprite->h);
 	game->sprite->collectable = mlx_xpm_file_to_image(game->mlx,
 			"imgs/assets/collectable.xpm", &game->sprite->w, &game->sprite->h);
-	game->sprite->player = mlx_xpm_file_to_image(game->mlx,
-			"imgs/player/default_00.xpm", &game->sprite->w, &game->sprite->h);
+	player_idle(game);
 	game->player.x *= 64;
 	game->player.y *= 64;
 	mlx_hook(game->window, 17, 0, exit_game, game);

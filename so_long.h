@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:28:23 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/09 15:50:48 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/09 19:52:00 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,14 @@ typedef struct s_player
 	int			steps;
 }				t_player;
 
+typedef struct s_animation
+{
+	int			count_idle;
+	int			count_walk;
+	void		*player_idle[3];
+	void		*player_walk[6];
+}				t_animation;
+
 typedef struct s_sprite
 {
 	int			w;
@@ -52,7 +60,7 @@ typedef struct s_sprite
 	void		*wall;
 	void		*exit;
 	void		*collectable;
-	void		*player;
+	t_animation	player;
 }				t_sprite;
 
 typedef struct s_game
@@ -89,8 +97,9 @@ void			flood_fill(char **map, int x, int y);
 void			is_berfile(t_game *game, char *filename);
 void			locate_player(t_game *game);
 //======================== IMAGES ==================================
-void			print_images(t_game *game);
+void			print_player(t_game *game);
 void			create_map(t_game *game);
+void			player_idle(t_game *game);
 //====================== GAME GENERAL ==============================
 void			game_start(t_game *game);
 char			*get_next_line(int fd);

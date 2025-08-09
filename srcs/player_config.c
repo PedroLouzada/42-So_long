@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:51:14 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/09 14:55:27 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/09 17:14:28 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int	player_movement(t_game *game)
 		game->player.x -= 1;
 	if (game->keys[D] && colision_check(game, 3))
 		game->player.x += 1;
-	print_images(game);
+	print_player(game);
 	return (0);
 }
