@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image_treatment.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:02:11 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/10 20:52:10 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/10 22:06:03 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ static void	animation_time(t_game *game)
 	if (game->sprite->player.count_walk >= 6)
 		game->sprite->player.count_walk = 0;
 	game->sprite->player.count_collect++;
-	if (game->sprite->player.count_collect >= 2)
-		game->sprite->player.count_walk = 0;
+	if (game->sprite->player.count_collect >= 4)
+		game->sprite->player.count_collect = 0;
 }
 
 void	print_player(t_game *game)
