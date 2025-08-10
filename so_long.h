@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:28:23 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/09 19:52:00 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/10 20:49:50 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,12 @@ typedef struct s_animation
 {
 	int			count_idle;
 	int			count_walk;
+	int			count_collect;
+	int			look_left;
 	void		*player_idle[3];
+	void		*player_idle_left[3];
 	void		*player_walk[6];
+	void		*player_walk_left[6];
 }				t_animation;
 
 typedef struct s_sprite
@@ -59,7 +63,7 @@ typedef struct s_sprite
 	void		*floor;
 	void		*wall;
 	void		*exit;
-	void		*collectable;
+	void		*collectable[4];
 	t_animation	player;
 }				t_sprite;
 
@@ -100,6 +104,8 @@ void			locate_player(t_game *game);
 void			print_player(t_game *game);
 void			create_map(t_game *game);
 void			player_idle(t_game *game);
+void			player_walk(t_game *game);
+void			collect_imgs(t_game *game);
 //====================== GAME GENERAL ==============================
 void			game_start(t_game *game);
 char			*get_next_line(int fd);

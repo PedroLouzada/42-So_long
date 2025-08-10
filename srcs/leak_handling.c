@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:56:31 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/09 19:58:42 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/10 20:53:45 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,22 @@ void	free_imgs(t_game *game)
 
 	i = 0;
 	while (i < 3)
+	{
+		mlx_destroy_image(game->mlx, game->sprite->player.player_idle_left[i]);
 		mlx_destroy_image(game->mlx, game->sprite->player.player_idle[i++]);
+	}
 	i = 0;
 	while (i < 6)
+	{
+		mlx_destroy_image(game->mlx, game->sprite->player.player_walk_left[i]);
 		mlx_destroy_image(game->mlx, game->sprite->player.player_walk[i++]);
+	}
+	i = 0;
+	while (i < 4)
+		mlx_destroy_image(game->mlx, game->sprite->collectable[i++]);
 	mlx_destroy_image(game->mlx, game->sprite->floor);
 	mlx_destroy_image(game->mlx, game->sprite->exit);
 	mlx_destroy_image(game->mlx, game->sprite->wall);
-	mlx_destroy_image(game->mlx, game->sprite->collectable);
 }
 
 int	exit_game(t_game *game)

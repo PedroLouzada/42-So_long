@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:27:56 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/09 19:15:16 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/10 20:52:47 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int ac, char **av)
 			return (0);
 		game.sprite->player.count_idle = 0;
 		game.sprite->player.count_walk = 0;
+		game.sprite->player.count_collect = 0;
 		map_validation(&game, av[1]);
 		game_start(&game);
 		create_map(&game);
