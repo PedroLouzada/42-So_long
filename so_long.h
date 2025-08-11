@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:28:23 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/10 21:58:53 by pedro            ###   ########.fr       */
+/*   Updated: 2025/08/11 21:57:29 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct s_animation
 	void		*player_idle_left[3];
 	void		*player_walk[6];
 	void		*player_walk_left[6];
+	int			**buffer;
+	void		*buffer_img;
 }				t_animation;
 
 typedef struct s_sprite
@@ -106,6 +108,9 @@ void			create_map(t_game *game);
 void			player_idle(t_game *game);
 void			player_walk(t_game *game);
 void			collect_imgs(t_game *game);
+int				get_pixel(void *img, int x, int y);
+void			put_img(t_game *game, void *img, int sx, int sy);
+void			copy_buffer(t_game *game, int pixel, int x, int y);
 //====================== GAME GENERAL ==============================
 void			game_start(t_game *game);
 char			*get_next_line(int fd);

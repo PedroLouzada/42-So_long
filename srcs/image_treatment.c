@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image_treatment.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:02:11 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/10 22:06:03 by pedro            ###   ########.fr       */
+/*   Updated: 2025/08/11 22:04:54 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,6 @@ static void	animation_time(t_game *game)
 
 void	print_player(t_game *game)
 {
-	void	*img;
-
 	mlx_clear_window(game->mlx, game->window);
 	create_map(game);
 	if (!game->sprite->player.look_left)
@@ -105,21 +103,19 @@ void	print_player(t_game *game)
 		if ((!game->keys[W] && !game->keys[S] && !game->keys[A]
 				&& !game->keys[D]) || ((game->keys[W] && game->keys[S])
 				|| (game->keys[A] && game->keys[D])))
-			img = game->sprite->player.player_idle[game->sprite->player.count_idle];
+			put_img(game, game->sprite->player.player_idle[game->sprite->player.count_idle], game->player.x, game->player.y);
 		else
-			img = game->sprite->player.player_walk[game->sprite->player.count_walk];
+			put_img(game, game->sprite->player.player_walk[game->sprite->player.count_walk], game->player.x, game->player.y);
 	}
 	else
 	{
 		if ((!game->keys[W] && !game->keys[S] && !game->keys[A]
 				&& !game->keys[D]) || ((game->keys[W] && game->keys[S])
 				|| (game->keys[A] && game->keys[D])))
-			img = game->sprite->player.player_idle_left[game->sprite->player.count_idle];
+			put_img(game, game->sprite->player.player_idle_left[game->sprite->player.count_idle], game->player.x, game->player.y);
 		else
-			img = game->sprite->player.player_walk_left[game->sprite->player.count_walk];
+			put_img(game, game->sprite->player.player_walk_left[game->sprite->player.count_walk], game->player.x, game->player.y);
 	}
-	if (img)
-		mlx_put_image_to_window(game->mlx, game->window, img, game->player.x,
-			game->player.y);
+	mlx_put_image_to_window(game->mlx, game->window, game->sprite->player.buffer_img, 0, 0);
 	animation_time(game);
 }

@@ -6,16 +6,49 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 17:17:45 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/10 20:43:37 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/11 21:18:59 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+
+static void	ft_bzero(void *s, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		((unsigned char *)s)[i] = '\0';
+		i++;
+	}
+}
+
+static void	*ft_calloc(size_t num, size_t size)
+{
+	void	*var;
+
+	if (size != 0 && num > (size_t)-1 / size)
+		return (NULL);
+	var = malloc(num * size);
+	if (!var)
+		return (NULL);
+	ft_bzero(var, (num * size));
+	return (var);
+}
+
 void	game_start(t_game *game)
 {
+	int i;
+
+	i = 0;
+	game->sprite->player.buffer = ft_calloc(game->map.height * 64, sizeof(int *));
+	while (i < game->map.width)
+		game->sprite->player.buffer[i++] = ft_calloc(game->map.width * 64, sizeof(int));
 	game->sprite->player.look_left = 0;
 	game->mlx = mlx_init();
+	game->sprite->player.buffer_img = mlx_new_image(game->mlx, game->map.width * 64, game->map.height * 64);
 	game->window = mlx_new_window(game->mlx, game->map.width * 64,
 			game->map.height * 64, "so_long");
 	game->sprite->exit = mlx_xpm_file_to_image(game->mlx,

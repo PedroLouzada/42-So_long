@@ -3,40 +3,83 @@
 /*                                                        :::      ::::::::   */
 /*   print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 19:20:01 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/10 21:59:57 by pedro            ###   ########.fr       */
+/*   Updated: 2025/08/11 22:15:13 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+int	get_pixel(void *img, int x, int y)
+{
+	char	*data_addr;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
+	int		offset;
+
+	data_addr = mlx_get_data_addr(img, &bits_per_pixel, &size_line, &endian);
+	offset = (y * size_line) + (x * (bits_per_pixel) / 8);
+	return (*(unsigned int *)(data_addr + offset));
+}
+void	copy_buffer(t_game *game, int _pixel, int x, int y)
+{
+	char	*data_addr;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
+	char	*pixel;
+
+	data_addr = mlx_get_data_addr(game->sprite->player.buffer_img,
+			&bits_per_pixel, &size_line, &endian);
+	pixel = data_addr + (y * size_line + x * (bits_per_pixel / 8));
+	*(int *)pixel = _pixel;
+}
+
+void	put_img(t_game *game, void *img, int sx, int sy)
+{
+	int	pixel;
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < 64)
+	{
+		x = 0;
+		while (x < 64)
+		{
+			pixel = get_pixel(img, x, y);
+			if (pixel != 16711935)
+				copy_buffer(game, pixel, sx + x, sy + y);
+			x++;
+		}
+		y++;
+	}
+}
+
 void	create_map(t_game *game)
 {
-	int	i;
-	int	j;
+	int	y;
+	int	x;
 
-	i = 0;
-	while (game->map.coordinate[i])
+	y = 0;
+	while (game->map.coordinate[y])
 	{
-		j = 0;
-		while (game->map.coordinate[i][j])
+		x = 0;
+		while (game->map.coordinate[y][x])
 		{
-			if (game->map.coordinate[i][j] == '1')
-				mlx_put_image_to_window(game->mlx, game->window,
-					game->sprite->wall, j * 64, i * 64);
-			else if (game->map.coordinate[i][j] == 'F')
-				mlx_put_image_to_window(game->mlx, game->window,
-					game->sprite->exit, j * 64, i * 64);
-			else if (game->map.coordinate[i][j] == 'B')
-				mlx_put_image_to_window(game->mlx, game->window,
-					game->sprite->collectable[game->sprite->player.count_collect], j * 64, i * 64);
+			if (game->map.coordinate[y][x] == '1')
+				put_img(game, game->sprite->wall, x * 64, y * 64);
+			else if (game->map.coordinate[y][x] == 'F')
+				put_img(game, game->sprite->exit, x * 64, y * 64);
 			else
-				mlx_put_image_to_window(game->mlx, game->window,
-					game->sprite->floor, j * 64, i * 64);
-			j++;
+				put_img(game, game->sprite->floor, x * 64, y * 64);
+			if (game->map.coordinate[y][x] == 'B')
+				put_img(game, game->sprite->collectable[game->sprite->player.count_collect], x * 64, y * 64);
+			x++;
 		}
-		i++;
+		y++;
 	}
 }

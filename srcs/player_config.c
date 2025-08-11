@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_config.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:51:14 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/10 22:06:34 by pedro            ###   ########.fr       */
+/*   Updated: 2025/08/11 21:49:33 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	player_movement(t_game *game)
 		game->sprite->player.look_left = 0;
 		game->player.x += 1;
 	}
+	create_map(game);
 	print_player(game);
 	return (0);
 }
