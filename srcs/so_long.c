@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:27:56 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/11 22:23:54 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/12 15:57:18 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ int	main(int ac, char **av)
 		game.sprite = malloc(sizeof(t_sprite));
 		if (!game.sprite)
 			return (0);
-		game.sprite->player.count_idle = 0;
-		game.sprite->player.count_walk = 0;
-		game.sprite->player.count_collect = 0;
+		game.sprite->animation.count_player_idle = 0;
+		game.sprite->animation.count_enemy_idle = 0;
+		game.sprite->animation.count_walk = 0;
+		game.sprite->animation.count_collect = 0;
 		map_validation(&game, av[1]);
 		game_start(&game);
 		mlx_loop(game.mlx);

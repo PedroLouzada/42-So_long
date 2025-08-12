@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 19:20:01 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/11 22:21:55 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/12 15:52:36 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	copy_buffer(t_game *game, int _pixel, int x, int y)
 	int		endian;
 	char	*pixel;
 
-	data_addr = mlx_get_data_addr(game->sprite->player.buffer_img,
+	data_addr = mlx_get_data_addr(game->sprite->animation.canva,
 			&bits_per_pixel, &size_line, &endian);
 	pixel = data_addr + (y * size_line + x * (bits_per_pixel / 8));
 	*(int *)pixel = _pixel;
@@ -77,7 +77,9 @@ void	create_map(t_game *game)
 			else
 				put_img(game, game->sprite->floor, x * 64, y * 64);
 			if (game->map.coordinate[y][x] == 'B')
-				put_img(game, game->sprite->collectable[game->sprite->player.count_collect], x * 64, y * 64);
+				put_img(game, game->sprite->collectable[game->sprite->animation.count_collect], x * 64, y * 64);
+			else if (game->map.coordinate[y][x] == 'X')
+				put_img(game, game->sprite->animation.enemy[game->sprite->animation.count_enemy_idle], x * 64, y * 64);
 			x++;
 		}
 		y++;

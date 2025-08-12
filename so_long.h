@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:28:23 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/11 21:57:29 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/12 18:01:33 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,23 @@ typedef struct s_player
 	int			y;
 	int			collect;
 	int			steps;
+	int			look_left;
+	int			die;
 }				t_player;
 
 typedef struct s_animation
 {
-	int			count_idle;
+	int			count_player_idle;
+	int			count_enemy_idle;
 	int			count_walk;
 	int			count_collect;
-	int			look_left;
 	void		*player_idle[3];
 	void		*player_idle_left[3];
 	void		*player_walk[6];
 	void		*player_walk_left[6];
+	void		*enemy[5];
 	int			**buffer;
-	void		*buffer_img;
+	void		*canva;
 }				t_animation;
 
 typedef struct s_sprite
@@ -66,7 +69,7 @@ typedef struct s_sprite
 	void		*wall;
 	void		*exit;
 	void		*collectable[4];
-	t_animation	player;
+	t_animation	animation;
 }				t_sprite;
 
 typedef struct s_game
@@ -88,7 +91,9 @@ int				key_press(int key, t_game *game);
 int				player_movement(t_game *game);
 int				key_realease(int key, t_game *game);
 unsigned long	get_time(void);
-int				colision_check(t_game *game, int i);
+int				colision(t_game *game, int i);
+int				colision_top_down(t_game *game, int px_left, int px_right, int px_limit);
+int				colision_left_right(t_game *game, int px_top, int px_down, int px_limit);
 //======================= MAP PARSING ==============================
 int				ft_strlen(char *s);
 void			row_and_col_len(t_game *game, char *filename);
@@ -111,6 +116,7 @@ void			collect_imgs(t_game *game);
 int				get_pixel(void *img, int x, int y);
 void			put_img(t_game *game, void *img, int sx, int sy);
 void			copy_buffer(t_game *game, int pixel, int x, int y);
+void			enemy_imgs(t_game *game);
 //====================== GAME GENERAL ==============================
 void			game_start(t_game *game);
 char			*get_next_line(int fd);

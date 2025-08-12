@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:28:04 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/09 16:50:09 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/12 15:49:41 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,28 +40,29 @@ void	char_check_after(t_game *game)
 
 void	char_check_before(t_game *game)
 {
-	int	i;
-	int	j;
+	int	y;
+	int	x;
 
-	i = 0;
-	while (game->map.coordinate[i])
+	y = 0;
+	while (game->map.coordinate[y])
 	{
-		j = 0;
-		while (game->map.coordinate[i][j])
+		x = 0;
+		while (game->map.coordinate[y][x])
 		{
-			if (game->map.coordinate[i][j] == 'P')
+			if (game->map.coordinate[y][x] == 'P')
 				game->map.p++;
-			else if (game->map.coordinate[i][j] == 'C')
+			else if (game->map.coordinate[y][x] == 'C')
 				game->map.c++;
-			else if (game->map.coordinate[i][j] == 'E')
+			else if (game->map.coordinate[y][x] == 'E')
 				game->map.e++;
-			else if (game->map.coordinate[i][j] != '1'
-				&& game->map.coordinate[i][j] != '\n'
-				&& game->map.coordinate[i][j] != '0')
+			else if (game->map.coordinate[y][x] != '1'
+				&& game->map.coordinate[y][x] != '\n'
+				&& game->map.coordinate[y][x] != '0'
+				&& game->map.coordinate[y][x] != 'X')
 				error_msg(game);
-			j++;
+			x++;
 		}
-		i++;
+		y++;
 	}
 	if (game->map.p != 1 || game->map.c == 0 || game->map.e != 1)
 		error_msg(game);

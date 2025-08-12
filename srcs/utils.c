@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 17:17:45 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/11 21:18:59 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/12 15:59:05 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ void	game_start(t_game *game)
 	int i;
 
 	i = 0;
-	game->sprite->player.buffer = ft_calloc(game->map.height * 64, sizeof(int *));
+	game->sprite->animation.buffer = ft_calloc(game->map.height * 64, sizeof(int *));
 	while (i < game->map.width)
-		game->sprite->player.buffer[i++] = ft_calloc(game->map.width * 64, sizeof(int));
-	game->sprite->player.look_left = 0;
+		game->sprite->animation.buffer[i++] = ft_calloc(game->map.width * 64, sizeof(int));
+	game->player.look_left = 0;
 	game->mlx = mlx_init();
-	game->sprite->player.buffer_img = mlx_new_image(game->mlx, game->map.width * 64, game->map.height * 64);
+	game->sprite->animation.canva = mlx_new_image(game->mlx, game->map.width * 64, game->map.height * 64);
 	game->window = mlx_new_window(game->mlx, game->map.width * 64,
 			game->map.height * 64, "so_long");
 	game->sprite->exit = mlx_xpm_file_to_image(game->mlx,
@@ -60,6 +60,7 @@ void	game_start(t_game *game)
 	player_idle(game);
 	player_walk(game);
 	collect_imgs(game);
+	enemy_imgs(game);
 	game->player.x *= 64;
 	game->player.y *= 64;
 	mlx_hook(game->window, 17, 0, exit_game, game);
