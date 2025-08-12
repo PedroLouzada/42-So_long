@@ -6,11 +6,16 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:54:30 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/09 15:05:36 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/12 19:38:01 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void print_steps(t_game *game)
+{
+	mlx_string_put(game->mlx, game->window, 0, game->map.height * 64, 0, "STEPS: ");
+}
 
 int	key_press(int key, t_game *game)
 {

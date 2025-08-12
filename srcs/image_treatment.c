@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:02:11 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/12 16:35:06 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/12 19:39:20 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,5 +140,6 @@ void	print_player(t_game *game)
 			put_img(game, game->sprite->animation.player_walk_left[game->sprite->animation.count_walk], game->player.x, game->player.y);
 	}
 	mlx_put_image_to_window(game->mlx, game->window, game->sprite->animation.canva, 0, 0);
+	mlx_string_put(game->mlx, game->window, 0, game->map.height * 64, 0, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 	animation_time(game);
 }
