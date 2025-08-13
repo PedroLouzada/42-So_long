@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_config.c                                    :+:      :+:    :+:   */
+/*   image_verification.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/26 16:51:14 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/13 20:07:05 by pbongiov         ###   ########.fr       */
+/*   Created: 2025/08/13 20:42:14 by pbongiov          #+#    #+#             */
+/*   Updated: 2025/08/13 21:10:42 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	player_movement(t_game *game)
+static void check_img(game)
 {
-	if (game->keys[W] && colision(game, 0))
-		game->player.y -= 1;
-	if (game->keys[S] && colision(game, 1))
-		game->player.y += 1;
-	if (game->keys[A] && colision(game, 2))
+	int i;
+
+	i = 0;
+	while (i < 5)
 	{
-		game->player.look_left = 1;
-		game->player.x -= 1;
+		if (!game->sprite->animation->player_walk[i] || game->sprite->animation->player_walk_left[i])
+			exit_img_msg(game);
+		i++;
 	}
-	if (game->keys[D] && colision(game, 3))
+	i = 0;
+	while (i < 3)
 	{
-		game->player.look_left = 0;
-		game->player.x += 1;
+		if (!game->sprite->animation.player_idle[i] || game->sprite->animation.player_idle_left[i])
+			exit_img_msg(game);
+		i++;
 	}
-	create_map(game);
-	print_player(game);
-	step_count(game);
-	return (0);
+	i = 0;
+	while (i < 4)
+	{
+		if (!game->sprite->collectable[i])
+			exit_img_msg(game);
+		i++
+	}
 }
+
+stativ void

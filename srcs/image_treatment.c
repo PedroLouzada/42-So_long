@@ -6,12 +6,41 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:02:11 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/13 17:02:21 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/13 20:07:27 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+static int count_digits(int n)
+{
+	int i;
+
+	i = 1;
+	while (n >= 10)
+	{
+		n = n/10;
+		i++;
+	}
+	return (i);
+}
+
+static void draw_digits(t_game *game, int n, int x)
+{
+	int i;
+	
+	if (n >= 10)
+		draw_digits(game, n / 10, x - 32);
+	i = n % 10;
+	mlx_put_image_to_window(game->mlx, game->window, game->sprite->numbers[i], x, game->map.height * 55);
+}
+
+void calculate_steps_sprite(t_game *game, int n, int x)
+{
+	int start_x;
+	start_x = x + (count_digits(n) - 1) * 32;
+	draw_digits(game, n, start_x);
+}
 static void	animation_time(t_game *game)
 {
 	static unsigned long	last_time;
@@ -42,6 +71,7 @@ static void	print_steps(t_game *game)
 	mlx_put_image_to_window(game->mlx, game->window, game->sprite->steps[2], 80, game->map.height * 55);
 	mlx_put_image_to_window(game->mlx, game->window, game->sprite->steps[3], 112, game->map.height * 55);
 	mlx_put_image_to_window(game->mlx, game->window, game->sprite->steps[0], 144, game->map.height * 55);
+	calculate_steps_sprite(game, game->player.steps, 176);
 }
 
 void	print_player(t_game *game)

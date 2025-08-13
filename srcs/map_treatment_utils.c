@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:35:54 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/07 18:46:39 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/13 20:17:23 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	row_and_col_len(t_game *game, char *filename)
 
 	i = 0;
 	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		error_msg(game);
 	s = get_next_line(fd);
 	if (!s)
 		exit_game(game);

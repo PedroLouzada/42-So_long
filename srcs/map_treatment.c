@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:31:08 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/12 14:57:09 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/13 20:17:16 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ void	map_validation(t_game *game, char *filename)
 	is_berfile(game, filename);
 	map_input(game, filename);
 	is_closed(game);
+	if (game->map.height * 64 > 1080 || game->map.width * 64 > 1920)
+		error_msg(game);
 	char_check_before(game);
 	locate_player(game);
 	flood_fill(game->map.coordinate, game->player.x, game->player.y);

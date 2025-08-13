@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:56:31 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/12 19:02:02 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/13 20:32:39 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,36 @@ void	free_map(t_game *game)
 		free(game->sprite);
 }
 
-void	error_msg(t_game *game)
+static void free_imgs_3(t_game *game)
 {
-	free_map(game);
-	write(2, "Envie um mapa valido!\n", 22);
-	exit(0);
+		int i;
+
+	i = 0;
+	while (i < 6)
+	{
+		if (game->sprite->animation.player_walk_left[i])
+			mlx_destroy_image(game->mlx, game->sprite->animation.player_walk_left[i]);
+		if (game->sprite->animation.player_walk[i])
+			mlx_destroy_image(game->mlx, game->sprite->animation.player_walk[i]);
+		i++;
+	}
+	i = 0;
+	while (i < 10)
+	{
+		if (game->sprite->numbers[i])
+			mlx_destroy_image(game->mlx, game->sprite->numbers[i]);
+		i++;
+	}
+	i = 0;
+	while (i < 4)
+	{
+		if (game->sprite->steps[i])
+			mlx_destroy_image(game->mlx, game->sprite->steps[i]);
+		i++;
+	}
 }
 
-static void free_imgs_in_loop(t_game *game)
+static void free_imgs_2(t_game *game)
 {
 	int i;
 
@@ -67,19 +89,8 @@ static void free_imgs_in_loop(t_game *game)
 }
 void	free_imgs(t_game *game)
 {
-	int i;
-
-	
-	i = 0;
-	while (i < 6)
-	{
-		if (game->sprite->animation.player_walk_left[i])
-			mlx_destroy_image(game->mlx, game->sprite->animation.player_walk_left[i]);
-		if (game->sprite->animation.player_walk[i])
-			mlx_destroy_image(game->mlx, game->sprite->animation.player_walk[i]);
-		i++;
-	}
-	free_imgs_in_loop(game);
+	free_imgs_2(game);
+	free_imgs_3(game);
 	if (game->sprite->floor)
 		mlx_destroy_image(game->mlx, game->sprite->floor);
 	if (game->sprite->exit)
@@ -97,6 +108,9 @@ int	exit_game(t_game *game)
 	i = 0;
 	if (game->window)
 		mlx_destroy_window(game->mlx, game->window);
+	while (game->sprite->animation.buffer[i])
+		free(game->sprite->animation.buffer[i++]);
+	free(game->sprite->animation.buffer);
 	free_imgs(game);
 	free_map(game);
 	mlx_destroy_display(game->mlx);

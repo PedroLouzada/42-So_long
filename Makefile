@@ -6,7 +6,7 @@
 #    By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 17:25:21 by pbongiov          #+#    #+#              #
-#    Updated: 2025/08/13 17:35:21 by pbongiov         ###   ########.fr        #
+#    Updated: 2025/08/13 20:58:54 by pbongiov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS_FILES = get_next_line.c so_long.c utils.c player_config.c \
 			 map_treatment.c map_treatment_utils.c image_declaration.c \
 			 map_treatment_utils_2.c  image_treatment.c movment_config.c \
 			 leak_handling.c print_map.c colision.c colision_utils.c \
-			 image_declaration_2.c \
+			 image_declaration_2.c image_verification.c \
 
 SRCS_DIR = srcs
 
@@ -40,7 +40,7 @@ $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)
 	
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c | $(OBJS_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@ 
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)
@@ -51,6 +51,6 @@ fclean:		clean
 re:		fclean 	all
 
 r:
-	make re && clear && ./so_long  teste.ber
+	make re && clear && ./so_long teste.ber
 
 .PHONY : all clean fclean re

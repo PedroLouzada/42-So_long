@@ -6,12 +6,29 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 17:17:45 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/13 17:30:46 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/13 20:29:30 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+void step_count(t_game *game)
+{
+	static int early_position_x;
+	static int early_position_y;
+
+	if (early_position_x == 0 && early_position_y == 0)
+	{
+		early_position_x = (game->player.x + 32) / 64;
+		early_position_y = (game->player.y + 32)/ 64;
+	}
+	if ((game->player.x + 32) / 64 != early_position_x || (game->player.y + 32) / 64 != early_position_y)
+	{
+		early_position_x = (game->player.x + 32)/ 64;
+		early_position_y = (game->player.y + 32)/ 64;
+		game->player.steps++;
+	}
+}
 
 static void	ft_bzero(void *s, size_t len)
 {
@@ -64,4 +81,10 @@ void	game_start(t_game *game)
 	mlx_hook(game->window, 2, (1L << 0), key_press, game);
 	mlx_hook(game->window, 3, (1L << 1), key_realease, game);
 	mlx_loop_hook(game->mlx, player_movement, game);
+}
+void	error_msg(t_game *game)
+{
+	free_map(game);
+	write(2, "Envie um mapa valido!\n", 22);
+	exit(0);
 }

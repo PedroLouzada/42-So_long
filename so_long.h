@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:28:23 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/13 17:35:37 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/13 19:42:32 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int				player_movement(t_game *game);
 int				key_realease(int key, t_game *game);
 unsigned long	get_time(void);
 int				colision(t_game *game, int i);
+void 			step_count(t_game *game);
 int				colision_top_down(t_game *game, int px_left, int px_right, int px_limit);
 int				colision_left_right(t_game *game, int px_top, int px_down, int px_limit);
 //======================= MAP PARSING ==============================
@@ -117,6 +118,7 @@ void			put_img(t_game *game, void *img, int sx, int sy);
 void			copy_buffer(t_game *game, int pixel, int x, int y);
 void 			numbers_img_declaration(t_game *game);
 void			general_declaration(t_game *game);
+void 			calculate_steps_sprite(t_game *game, int n, int x);
 //====================== GAME GENERAL ==============================
 void			game_start(t_game *game);
 char			*get_next_line(int fd);
