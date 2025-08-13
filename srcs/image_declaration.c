@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image_declaration.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 16:18:36 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/13 20:46:28 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/13 22:41:15 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,16 @@ static void	enemy_imgs(t_game *game)
 
 void	general_declaration(t_game *game)
 {
+	game->sprite->exit = mlx_xpm_file_to_image(game->mlx,
+			"imgs/assets/exit.xpm", &game->sprite->w, &game->sprite->h);
+	game->sprite->floor = mlx_xpm_file_to_image(game->mlx,
+			"imgs/assets/grass.xpm", &game->sprite->w, &game->sprite->h);
+	game->sprite->wall = mlx_xpm_file_to_image(game->mlx,
+			"imgs/assets/wall.xpm", &game->sprite->w, &game->sprite->h);
 	player_idle(game);
 	player_walk(game);
 	collect_imgs(game);
 	enemy_imgs(game);
 	numbers_img_declaration(game);
+	check_img(game);
 }

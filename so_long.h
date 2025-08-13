@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:28:23 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/13 19:42:32 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/13 22:39:01 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ void			copy_buffer(t_game *game, int pixel, int x, int y);
 void 			numbers_img_declaration(t_game *game);
 void			general_declaration(t_game *game);
 void 			calculate_steps_sprite(t_game *game, int n, int x);
+void 			check_img(t_game *game);
 //====================== GAME GENERAL ==============================
 void			game_start(t_game *game);
 char			*get_next_line(int fd);

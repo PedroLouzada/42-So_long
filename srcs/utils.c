@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 17:17:45 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/13 20:29:30 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/13 22:41:06 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,6 @@ void	game_start(t_game *game)
 	game->sprite->animation.canva = mlx_new_image(game->mlx, game->map.width * 64, game->map.height * 64);
 	game->window = mlx_new_window(game->mlx, game->map.width * 64,
 			game->map.height * 64, "so_long");
-	game->sprite->exit = mlx_xpm_file_to_image(game->mlx,
-			"imgs/assets/exit.xpm", &game->sprite->w, &game->sprite->h);
-	game->sprite->floor = mlx_xpm_file_to_image(game->mlx,
-			"imgs/assets/grass.xpm", &game->sprite->w, &game->sprite->h);
-	game->sprite->wall = mlx_xpm_file_to_image(game->mlx,
-			"imgs/assets/wall.xpm", &game->sprite->w, &game->sprite->h);
 	general_declaration(game);
 	game->player.x *= 64;
 	game->player.y *= 64;
