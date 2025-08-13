@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:28:23 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/12 18:01:33 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/13 17:35:37 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ typedef struct s_sprite
 	void		*wall;
 	void		*exit;
 	void		*collectable[4];
+	void		*steps[4];
+	void		*numbers[10];
 	t_animation	animation;
 }				t_sprite;
 
@@ -110,13 +112,11 @@ void			locate_player(t_game *game);
 //======================== IMAGES ==================================
 void			print_player(t_game *game);
 void			create_map(t_game *game);
-void			player_idle(t_game *game);
-void			player_walk(t_game *game);
-void			collect_imgs(t_game *game);
 int				get_pixel(void *img, int x, int y);
 void			put_img(t_game *game, void *img, int sx, int sy);
 void			copy_buffer(t_game *game, int pixel, int x, int y);
-void			enemy_imgs(t_game *game);
+void 			numbers_img_declaration(t_game *game);
+void			general_declaration(t_game *game);
 //====================== GAME GENERAL ==============================
 void			game_start(t_game *game);
 char			*get_next_line(int fd);

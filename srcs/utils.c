@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 17:17:45 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/12 15:59:05 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/13 17:30:46 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,7 @@ void	game_start(t_game *game)
 			"imgs/assets/grass.xpm", &game->sprite->w, &game->sprite->h);
 	game->sprite->wall = mlx_xpm_file_to_image(game->mlx,
 			"imgs/assets/wall.xpm", &game->sprite->w, &game->sprite->h);
-	player_idle(game);
-	player_walk(game);
-	collect_imgs(game);
-	enemy_imgs(game);
+	general_declaration(game);
 	game->player.x *= 64;
 	game->player.y *= 64;
 	mlx_hook(game->window, 17, 0, exit_game, game);

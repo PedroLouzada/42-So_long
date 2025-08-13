@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 18:03:03 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/12 18:12:28 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/13 17:15:14 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,12 @@ int colision_top_down(t_game *game, int px_left, int px_right, int px_limit)
 		if (game->map.coordinate[px_limit][px_right] == 'B')
 			game->map.coordinate[px_limit][px_right] = 'A';
 		game->player.collect++;
-		game->player.collect++;
+	}
+	else if (game->map.coordinate[px_limit][px_left] == 'F'
+		|| game->map.coordinate[px_limit][px_right] == 'F')
+	{
+		if (game->player.collect == game->map.c)
+			exit_game(game);
 	}
 	return (1);
 }
