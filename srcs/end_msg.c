@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 17:45:32 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/14 19:03:15 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/14 20:07:25 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,38 @@
 
 void	win_msg(void)
 {
-	printf(".....................................\n");
-	printf(".....                           .....\n");
-	printf(".....    Y   Y   OOO   U   U    .....\n");
-	printf(".....     Y Y   O   O  U   U    .....\n");
-	printf(".....      Y    O   O  U   U    .....\n");
-	printf(".....      Y    O   O  U   U    .....\n");
-	printf(".....      Y     OOO    UUU     .....\n");
-	printf(".....                           .....\n");
-	printf(".....   W   W    OOO    N   N   .....\n");
-	printf(".....   W   W   O   O   NN  N   .....\n");
-	printf(".....   W W W   O   O   N N N   .....\n");
-	printf(".....   WW WW   O   O   N  NN   .....\n");
-	printf(".....   W   W    OOO    N   N   .....\n");
-	printf(".....                           .....\n");
-	printf(".....................................\n");
+	write(1, ".....................................\n", 39);
+	write(1, ".....                           .....\n", 39);
+	write(1, ".....    Y   Y   OOO   U   U    .....\n", 39);
+	write(1, ".....     Y Y   O   O  U   U    .....\n", 39);
+	write(1, ".....      Y    O   O  U   U    .....\n", 39);
+	write(1, ".....      Y    O   O  U   U    .....\n", 39);
+	write(1, ".....      Y     OOO    UUU     .....\n", 39);
+	write(1, ".....                           .....\n", 39);
+	write(1, ".....   W   W    OOO    N   N   .....\n", 39);
+	write(1, ".....   W   W   O   O   NN  N   .....\n", 39);
+	write(1, ".....   W W W   O   O   N N N   .....\n", 39);
+	write(1, ".....   WW WW   O   O   N  NN   .....\n", 39);
+	write(1, ".....   W   W    OOO    N   N   .....\n", 39);
+	write(1, ".....                           .....\n", 39);
+	write(1, ".....................................\n", 39);
 }
 
 void	lose_msg(void)
 {
-	printf(".....................................\n");
-	printf(".....                           .....\n");
-	printf(".....    Y   Y   OOO   U   U    .....\n");
-	printf(".....     Y Y   O   O  U   U    .....\n");
-	printf(".....      Y    O   O  U   U    .....\n");
-	printf(".....      Y    O   O  U   U    .....\n");
-	printf(".....      Y     OOO    UUU     .....\n");
-	printf(".....                           .....\n");
-	printf(".....  L       OOO   SSSS  EEEE .....\n");
-	printf(".....  L      O   O S      E    .....\n");
-	printf(".....  L      O   O  SSS   EEE  .....\n");
-	printf(".....  L      O   O      S E    .....\n");
-	printf(".....  LLLLL   OOO   SSSS  EEEE .....\n");
-	printf(".....                           .....\n");
-	printf(".....................................\n");
+	write(1, ".....................................\n", 39);
+	write(1, ".....                           .....\n", 39);
+	write(1, ".....    Y   Y   OOO   U   U    .....\n", 39);
+	write(1, ".....     Y Y   O   O  U   U    .....\n", 39);
+	write(1, ".....      Y    O   O  U   U    .....\n", 39);
+	write(1, ".....      Y    O   O  U   U    .....\n", 39);
+	write(1, ".....      Y     OOO    UUU     .....\n", 39);
+	write(1, ".....                           .....\n", 39);
+	write(1, ".....  L       OOO   SSSS  EEEE .....\n", 39);
+	write(1, ".....  L      O   O S      E    .....\n", 39);
+	write(1, ".....  L      O   O  SSS   EEE  .....\n", 39);
+	write(1, ".....  L      O   O      S E    .....\n", 39);
+	write(1, ".....  LLLLL   OOO   SSSS  EEEE .....\n", 39);
+	write(1, ".....                           .....\n", 39);
+	write(1, ".....................................\n", 39);
 }
