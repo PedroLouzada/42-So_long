@@ -6,14 +6,14 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:28:23 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/14 18:47:46 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/14 18:58:13 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "mlx/mlx.h"
+# include "minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>

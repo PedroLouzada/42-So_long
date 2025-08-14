@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 19:20:01 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/14 18:30:09 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/14 19:44:40 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	print_player(t_game *game)
 	create_map(game);
 	if (!game->player.look_left)
 	{
-		if (check_movment(game))
+		if (!check_movment(game))
 			put_img(game, game->sprite->p_idle[game->sprite->count_p],
 				game->player.x, game->player.y);
 		else

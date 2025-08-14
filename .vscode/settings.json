@@ -2,6 +2,7 @@
 	"files.associations": {
 		"so_long.h": "c",
 		"map": "c",
-		"format": "c"
+		"format": "c",
+		"time.h": "c"
 	}
 }
