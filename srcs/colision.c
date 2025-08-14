@@ -6,12 +6,11 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 19:30:04 by pedro             #+#    #+#             */
-/*   Updated: 2025/08/12 18:11:30 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/14 18:05:52 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
 
 static int	colision_top(t_game *game)
 {

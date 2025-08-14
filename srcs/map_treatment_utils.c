@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:35:54 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/13 20:17:23 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/14 18:06:17 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,14 @@ void	is_rectangular(char *s, t_game *game)
 	if (ft_strlen(s) < 3)
 	{
 		free(s);
-		free_map(game);
-		exit(0);
+		error_msg(game);
 	}
 	if (i == 0)
 		i = ft_strlen(s);
 	else if (i != ft_strlen(s))
 	{
 		free(s);
-		free_map(game);
-		exit(0);
+		error_msg(game);
 	}
 	i = ft_strlen(s);
 }
@@ -65,18 +63,18 @@ void	is_closed(t_game *game)
 	i = 0;
 	if (game->map.height < 3)
 		error_msg(game);
-	while (game->map.coordinate[0][i] && game->map.coordinate[0][i] != '\n')
+	while (game->map.arr[0][i] && game->map.arr[0][i] != '\n')
 	{
-		if (game->map.coordinate[0][i] != '1'
-			|| game->map.coordinate[game->map.height - 1][i] != '1')
+		if (game->map.arr[0][i] != '1' || game->map.arr[game->map.height
+			- 1][i] != '1')
 			error_msg(game);
 		i++;
 	}
 	i = 0;
-	while (game->map.coordinate[i])
+	while (game->map.arr[i])
 	{
-		if (game->map.coordinate[i][0] != '1'
-			|| game->map.coordinate[i][game->map.width - 1] != '1')
+		if (game->map.arr[i][0] != '1' || game->map.arr[i][game->map.width
+			- 1] != '1')
 			error_msg(game);
 		i++;
 	}

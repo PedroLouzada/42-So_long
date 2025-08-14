@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 16:51:14 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/13 20:07:05 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/14 18:30:27 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,13 @@ int	player_movement(t_game *game)
 	print_player(game);
 	step_count(game);
 	return (0);
+}
+
+int	check_movment(t_game *game)
+{
+	if ((!game->keys[W] && !game->keys[S] && !game->keys[A] && !game->keys[D])
+		|| ((game->keys[W] && game->keys[S]) || (game->keys[A]
+				&& game->keys[D])))
+		return (0);
+	return (1);
 }

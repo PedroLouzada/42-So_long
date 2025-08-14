@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 17:28:23 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/13 22:39:01 by pedro            ###   ########.fr       */
+/*   Updated: 2025/08/14 18:47:46 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_map
 	int			p;
 	int			c;
 	int			e;
-	char		**coordinate;
+	char		**arr;
 }				t_map;
 
 typedef struct s_player
@@ -46,21 +46,6 @@ typedef struct s_player
 	int			die;
 }				t_player;
 
-typedef struct s_animation
-{
-	int			count_player_idle;
-	int			count_enemy_idle;
-	int			count_walk;
-	int			count_collect;
-	void		*player_idle[3];
-	void		*player_idle_left[3];
-	void		*player_walk[6];
-	void		*player_walk_left[6];
-	void		*enemy[5];
-	int			**buffer;
-	void		*canva;
-}				t_animation;
-
 typedef struct s_sprite
 {
 	int			w;
@@ -71,7 +56,17 @@ typedef struct s_sprite
 	void		*collectable[4];
 	void		*steps[4];
 	void		*numbers[10];
-	t_animation	animation;
+	int			count_p;
+	int			count_e;
+	int			count_w;
+	int			count_c;
+	void		*p_idle[3];
+	void		*p_idle_l[3];
+	void		*p_walk[6];
+	void		*p_walk_l[6];
+	void		*enemy[5];
+	int			**buffer;
+	void		*canva;
 }				t_sprite;
 
 typedef struct s_game
@@ -94,9 +89,11 @@ int				player_movement(t_game *game);
 int				key_realease(int key, t_game *game);
 unsigned long	get_time(void);
 int				colision(t_game *game, int i);
-void 			step_count(t_game *game);
-int				colision_top_down(t_game *game, int px_left, int px_right, int px_limit);
-int				colision_left_right(t_game *game, int px_top, int px_down, int px_limit);
+void			step_count(t_game *game);
+int				colision_top_down(t_game *game, int px_l, int px_r, int limit);
+int				colision_left_right(t_game *game, int px_t, int px_d,
+					int limit);
+int				check_movment(t_game *game);
 //======================= MAP PARSING ==============================
 int				ft_strlen(char *s);
 void			row_and_col_len(t_game *game, char *filename);
@@ -116,12 +113,16 @@ void			create_map(t_game *game);
 int				get_pixel(void *img, int x, int y);
 void			put_img(t_game *game, void *img, int sx, int sy);
 void			copy_buffer(t_game *game, int pixel, int x, int y);
-void 			numbers_img_declaration(t_game *game);
+void			numbers_img_declaration(t_game *game);
 void			general_declaration(t_game *game);
-void 			calculate_steps_sprite(t_game *game, int n, int x);
-void 			check_img(t_game *game);
+void			calculate_steps_sprite(t_game *game, int n, int x);
+void			check_img(t_game *game);
+void			animation_time(t_game *game);
+void			print_steps(t_game *game);
 //====================== GAME GENERAL ==============================
 void			game_start(t_game *game);
 char			*get_next_line(int fd);
+void			win_msg(void);
+void			lose_msg(void);
 
 #endif

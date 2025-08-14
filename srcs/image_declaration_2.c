@@ -6,13 +6,13 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 17:25:09 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/13 19:29:42 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/14 18:22:21 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static void number_img_2(t_game *game)
+static void	number_img_2(t_game *game)
 {
 	game->sprite->numbers[7] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/assets/steps_&_numbers/07_bold.xpm", &game->sprite->w,
@@ -36,7 +36,8 @@ static void number_img_2(t_game *game)
 			"imgs/assets/steps_&_numbers/P_bold.xpm", &game->sprite->w,
 			&game->sprite->h);
 }
-void numbers_img_declaration(t_game *game)
+
+void	numbers_img_declaration(t_game *game)
 {
 	game->sprite->numbers[0] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/assets/steps_&_numbers/00_bold.xpm", &game->sprite->w,
@@ -59,5 +60,5 @@ void numbers_img_declaration(t_game *game)
 	game->sprite->numbers[6] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/assets/steps_&_numbers/06_bold.xpm", &game->sprite->w,
 			&game->sprite->h);
-	 number_img_2(game);
+	number_img_2(game);
 }

@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:31:08 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/13 20:17:16 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/14 18:25:14 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ void	map_initialize(t_game *game, char *filename)
 
 	i = 0;
 	row_and_col_len(game, filename);
-	game->map.coordinate = malloc(sizeof(char *) * (game->map.height + 1));
-	if (!game->map.coordinate)
+	game->map.arr = malloc(sizeof(char *) * (game->map.height + 1));
+	if (!game->map.arr)
 		return ;
 	while (i < game->map.height)
 	{
-		game->map.coordinate[i] = malloc(game->map.width + 1);
-		if (!game->map.coordinate[i])
+		game->map.arr[i] = malloc(game->map.width + 1);
+		if (!game->map.arr[i])
 		{
 			free_map(game);
 			exit(0);
 		}
-		game->map.coordinate[i][game->map.width] = '\0';
+		game->map.arr[i][game->map.width] = '\0';
 		i++;
 	}
-	game->map.coordinate[game->map.height] = NULL;
+	game->map.arr[game->map.height] = NULL;
 }
 
 void	map_input(t_game *game, char *filename)
@@ -54,7 +54,7 @@ void	map_input(t_game *game, char *filename)
 		is_rectangular(s, game);
 		while (s[j] && j < game->map.width)
 		{
-			game->map.coordinate[i][j] = s[j];
+			game->map.arr[i][j] = s[j];
 			j++;
 		}
 		free(s);
@@ -70,12 +70,12 @@ void	locate_player(t_game *game)
 	int	x;
 
 	y = 0;
-	while (game->map.coordinate[y])
+	while (game->map.arr[y])
 	{
 		x = 0;
-		while (game->map.coordinate[y][x])
+		while (game->map.arr[y][x])
 		{
-			if (game->map.coordinate[y][x] == 'P')
+			if (game->map.arr[y][x] == 'P')
 			{
 				game->player.x = x;
 				game->player.y = y;
@@ -117,6 +117,6 @@ void	map_validation(t_game *game, char *filename)
 		error_msg(game);
 	char_check_before(game);
 	locate_player(game);
-	flood_fill(game->map.coordinate, game->player.x, game->player.y);
+	flood_fill(game->map.arr, game->player.x, game->player.y);
 	char_check_after(game);
 }

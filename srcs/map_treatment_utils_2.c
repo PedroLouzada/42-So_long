@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:28:04 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/12 15:49:41 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/14 18:06:14 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	char_check_after(t_game *game)
 	i = 0;
 	collect = 0;
 	game->map.e = 0;
-	while (game->map.coordinate[i])
+	while (game->map.arr[i])
 	{
 		j = 0;
-		while (game->map.coordinate[i][j])
+		while (game->map.arr[i][j])
 		{
-			if (game->map.coordinate[i][j] == 'C')
+			if (game->map.arr[i][j] == 'C')
 				collect++;
-			else if (game->map.coordinate[i][j] == 'E')
+			else if (game->map.arr[i][j] == 'E')
 				game->map.e++;
 			j++;
 		}
@@ -44,21 +44,19 @@ void	char_check_before(t_game *game)
 	int	x;
 
 	y = 0;
-	while (game->map.coordinate[y])
+	while (game->map.arr[y])
 	{
 		x = 0;
-		while (game->map.coordinate[y][x])
+		while (game->map.arr[y][x])
 		{
-			if (game->map.coordinate[y][x] == 'P')
+			if (game->map.arr[y][x] == 'P')
 				game->map.p++;
-			else if (game->map.coordinate[y][x] == 'C')
+			else if (game->map.arr[y][x] == 'C')
 				game->map.c++;
-			else if (game->map.coordinate[y][x] == 'E')
+			else if (game->map.arr[y][x] == 'E')
 				game->map.e++;
-			else if (game->map.coordinate[y][x] != '1'
-				&& game->map.coordinate[y][x] != '\n'
-				&& game->map.coordinate[y][x] != '0'
-				&& game->map.coordinate[y][x] != 'X')
+			else if (game->map.arr[y][x] != '1' && game->map.arr[y][x] != '0'
+				&& game->map.arr[y][x] != 'X')
 				error_msg(game);
 			x++;
 		}

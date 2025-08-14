@@ -3,29 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 17:17:45 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/13 22:41:06 by pedro            ###   ########.fr       */
+/*   Updated: 2025/08/14 18:23:50 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void step_count(t_game *game)
+void	step_count(t_game *game)
 {
-	static int early_position_x;
-	static int early_position_y;
+	static int	early_position_x;
+	static int	early_position_y;
 
 	if (early_position_x == 0 && early_position_y == 0)
 	{
 		early_position_x = (game->player.x + 32) / 64;
-		early_position_y = (game->player.y + 32)/ 64;
+		early_position_y = (game->player.y + 32) / 64;
 	}
-	if ((game->player.x + 32) / 64 != early_position_x || (game->player.y + 32) / 64 != early_position_y)
+	if ((game->player.x + 32) / 64 != early_position_x || (game->player.y + 32)
+		/ 64 != early_position_y)
 	{
-		early_position_x = (game->player.x + 32)/ 64;
-		early_position_y = (game->player.y + 32)/ 64;
+		early_position_x = (game->player.x + 32) / 64;
+		early_position_y = (game->player.y + 32) / 64;
 		game->player.steps++;
 	}
 }
@@ -57,15 +58,17 @@ static void	*ft_calloc(size_t num, size_t size)
 
 void	game_start(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	game->sprite->animation.buffer = ft_calloc(game->map.height * 64, sizeof(int *));
+	game->sprite->buffer = ft_calloc(game->map.height * 64, sizeof(int *));
 	while (i < game->map.width)
-		game->sprite->animation.buffer[i++] = ft_calloc(game->map.width * 64, sizeof(int));
+		game->sprite->buffer[i++] = ft_calloc(game->map.width * 64,
+				sizeof(int));
 	game->player.look_left = 0;
 	game->mlx = mlx_init();
-	game->sprite->animation.canva = mlx_new_image(game->mlx, game->map.width * 64, game->map.height * 64);
+	game->sprite->canva = mlx_new_image(game->mlx, game->map.width * 64,
+			game->map.height * 64);
 	game->window = mlx_new_window(game->mlx, game->map.width * 64,
 			game->map.height * 64, "so_long");
 	general_declaration(game);
@@ -76,6 +79,7 @@ void	game_start(t_game *game)
 	mlx_hook(game->window, 3, (1L << 1), key_realease, game);
 	mlx_loop_hook(game->mlx, player_movement, game);
 }
+
 void	error_msg(t_game *game)
 {
 	free_map(game);

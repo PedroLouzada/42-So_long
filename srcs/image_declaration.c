@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image_declaration.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 16:18:36 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/13 22:41:15 by pedro            ###   ########.fr       */
+/*   Updated: 2025/08/14 18:23:05 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,47 +14,47 @@
 
 static void	player_walk(t_game *game)
 {
-	game->sprite->animation.player_walk[0] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->p_walk[0] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/walk_01.xpm", &game->sprite->w, &game->sprite->h);
-	game->sprite->animation.player_walk[1] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->p_walk[1] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/walk_02.xpm", &game->sprite->w, &game->sprite->h);
-	game->sprite->animation.player_walk[2] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->p_walk[2] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/walk_03.xpm", &game->sprite->w, &game->sprite->h);
-	game->sprite->animation.player_walk[3] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->p_walk[3] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/walk_04.xpm", &game->sprite->w, &game->sprite->h);
-	game->sprite->animation.player_walk[4] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->p_walk[4] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/walk_05.xpm", &game->sprite->w, &game->sprite->h);
-	game->sprite->animation.player_walk[5] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->p_walk[5] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/walk_06.xpm", &game->sprite->w, &game->sprite->h);
-	game->sprite->animation.player_walk_left[0] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->p_walk_l[0] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/walk_left_01.xpm", &game->sprite->w, &game->sprite->h);
-	game->sprite->animation.player_walk_left[1] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->p_walk_l[1] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/walk_left_02.xpm", &game->sprite->w, &game->sprite->h);
-	game->sprite->animation.player_walk_left[2] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->p_walk_l[2] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/walk_left_03.xpm", &game->sprite->w, &game->sprite->h);
-	game->sprite->animation.player_walk_left[3] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->p_walk_l[3] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/walk_left_04.xpm", &game->sprite->w, &game->sprite->h);
-	game->sprite->animation.player_walk_left[4] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->p_walk_l[4] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/walk_left_05.xpm", &game->sprite->w, &game->sprite->h);
-	game->sprite->animation.player_walk_left[5] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->p_walk_l[5] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/walk_left_06.xpm", &game->sprite->w, &game->sprite->h);
 }
 
 static void	player_idle(t_game *game)
 {
-	game->sprite->animation.player_idle[0] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->p_idle[0] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/default_00.xpm", &game->sprite->w, &game->sprite->h);
-	game->sprite->animation.player_idle[1] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->p_idle[1] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/default_01.xpm", &game->sprite->w, &game->sprite->h);
-	game->sprite->animation.player_idle[2] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->p_idle[2] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/default_02.xpm", &game->sprite->w, &game->sprite->h);
-	game->sprite->animation.player_idle_left[0] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->p_idle_l[0] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/default_left_00.xpm", &game->sprite->w,
 			&game->sprite->h);
-	game->sprite->animation.player_idle_left[1] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->p_idle_l[1] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/default_left_01.xpm", &game->sprite->w,
 			&game->sprite->h);
-	game->sprite->animation.player_idle_left[2] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->p_idle_l[2] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/player/default_left_02.xpm", &game->sprite->w,
 			&game->sprite->h);
 }
@@ -77,19 +77,19 @@ static void	collect_imgs(t_game *game)
 
 static void	enemy_imgs(t_game *game)
 {
-	game->sprite->animation.enemy[0] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->enemy[0] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/enemy/Mushroom_idle_00.xpm", &game->sprite->w,
 			&game->sprite->h);
-	game->sprite->animation.enemy[1] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->enemy[1] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/enemy/Mushroom_idle_01.xpm", &game->sprite->w,
 			&game->sprite->h);
-	game->sprite->animation.enemy[2] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->enemy[2] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/enemy/Mushroom_idle_02.xpm", &game->sprite->w,
 			&game->sprite->h);
-	game->sprite->animation.enemy[3] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->enemy[3] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/enemy/Mushroom_idle_03.xpm", &game->sprite->w,
 			&game->sprite->h);
-	game->sprite->animation.enemy[4] = mlx_xpm_file_to_image(game->mlx,
+	game->sprite->enemy[4] = mlx_xpm_file_to_image(game->mlx,
 			"imgs/enemy/Mushroom_idle_03.xpm", &game->sprite->w,
 			&game->sprite->h);
 }
