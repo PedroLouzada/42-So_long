@@ -6,7 +6,7 @@
 #    By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/21 17:25:21 by pbongiov          #+#    #+#              #
-#    Updated: 2025/08/14 19:46:12 by pbongiov         ###   ########.fr        #
+#    Updated: 2025/08/19 14:15:32 by pbongiov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ clean:
 	rm -rf $(OBJS)
 
 fclean:		clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) $(OBJS_DIR)
 
 re:		fclean 	all
 

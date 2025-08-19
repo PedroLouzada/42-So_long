@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:35:54 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/14 18:06:17 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/18 19:25:17 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	is_berfile(t_game *game, char *filename)
 	int	i;
 
 	i = ft_strlen(filename) - 4;
-	if (filename[i] != '.' && ft_strlen(filename) < 5)
+	if (filename[i] != '.' || ft_strlen(filename) < 5)
 		error_msg(game);
 	if (filename[i + 1] != 'b')
 		error_msg(game);
