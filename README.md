@@ -60,8 +60,19 @@ Then, run the game with a .ber map file:
 ```bash
 ./so_long maps/map01.ber
 ```
-Use WASD or arrow keys to move the player.
-Collect all items (C) and reach the exit (E). Avoid enemies!
+## Map Rules for so_long
+
+- The map must be rectangular (all rows have the same length).
+- Must contain exactly one player (P).
+- Must contain at least one collectible (C).
+- Must contain exactly one exit (E).
+- May contain zero or more enemies (X).
+- Walls are represented by 1.
+- Empty spaces are represented by 0.
+- The map must be fully enclosed by walls (the outer edges should be all 1).
+- The map must be winnable — meaning the player can collect all collectibles and reach the exit without impossible obstacles.
+- Use WASD or arrow keys to move the player.
+- Collect all items (C) and reach the exit (E). Avoid enemies!
 
 ## Future Improvements
 
