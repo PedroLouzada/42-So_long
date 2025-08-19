@@ -1,10 +1,10 @@
-# so_long
+# So_long
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/C_Maze_Example.svg/800px-C_Maze_Example.svg.png" width="600" alt="so_long Banner" />
 
 ## About the Project
 
-**so_long** is a graphical 2D game developed as part of the 42 school curriculum.  
+**So_long** is a graphical 2D game developed as part of the 42 school curriculum.  
 The goal is simple: the player must navigate a maze-like map, collect all collectibles, and reach the exit — all while avoiding enemies!
 
 This was my **first graphical project** using the **MiniLibX** library. I implemented both the mandatory part and the **bonus features**, including **animated sprites** and **enemy AI** that moves dynamically across the map.
@@ -35,10 +35,8 @@ This was my **first graphical project** using the **MiniLibX** library. I implem
 ### ⭐ Bonus Features
 
 - **Animated sprites** for player, collectibles, enemies, and environment.
-- **Enemies** that move across the map and cause the player to lose on contact.
-- **Game over** and **win screens**.
+- **Enemies** that cause the player to lose on contact.
 - Smooth rendering and frame updates.
-- Sound effects and extended visuals (optional).
 
 ---
 
@@ -57,32 +55,30 @@ Clone the repository and compile using:
 git clone https://github.com/PedroLouzada/so_long.git
 cd so_long
 make
-
+```
 Then, run the game with a .ber map file:
-
+```bash
 ./so_long maps/map01.ber
-
-Example:
-
-$ ./so_long maps/maze.ber
-
+```
 Use WASD or arrow keys to move the player.
 Collect all items (C) and reach the exit (E). Avoid enemies!
-Future Improvements
 
-    Implement more intelligent enemy AI (e.g. pathfinding).
+## Future Improvements
 
-    Add sound effects and background music.
+- Implement more intelligent enemy AI (e.g. pathfinding).
+- Add sound effects and background music.
+- Create a full level editor.
+- Improve animation transitions and framerate optimization.
+- Add save/load system or level progression.
 
-    Create a full level editor.
+## Final Thoughts
 
-    Improve animation transitions and framerate optimization.
-
-    Add save/load system or level progression.
-
-Final Thoughts
-
-so_long was an incredible introduction to graphics programming and event-driven logic.
+So_long was an incredible introduction to graphics programming and event-driven logic.
 It taught me a lot about state management, optimization, and user experience — and gave me the satisfaction of building a full playable game from scratch! 🕹️🔥
 
 If you're starting this project, enjoy the creative process — it’s a perfect mix of logic and design.
+
+## Contact
+Feel free to reach out:
+
+[Github](https://github.com/PedroLouzada)
