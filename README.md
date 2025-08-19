@@ -1,6 +1,6 @@
 # So_long
 
-<img src="gif/final.gif" width="600" alt="Gameplay Demo" />
+<img src="imgs/gif/final.gif" width="600" alt="Gameplay Demo" />
 
 ## About the Project
 
