@@ -53,13 +53,16 @@ Clone the repository and compile using:
 
 ```bash
 git clone https://github.com/PedroLouzada/so_long.git
-cd so_long
-make
 ```
 Download the [Minilibx](https://cdn.intra.42.fr/document/document/38618/minilibx-linux.tgz)
 
 Unzip the file and move intno the repository.
 
+Compile the program:
+```bash
+cd so_long
+make
+```
 Then, run the game with a .ber map file:
 ```bash
 ./so_long maps/map01.ber
