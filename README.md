@@ -49,6 +49,9 @@ It follows 42's standard restrictions (no external libraries outside those allow
 
 ## How to Use
 
+Download the [Minilibx](https://cdn.intra.42.fr/document/document/38618/minilibx-linux.tgz)
+Unzip the file and move intno the repository.
+
 Clone the repository and compile using:
 
 ```bash
