@@ -1,6 +1,6 @@
 # So_long
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/C_Maze_Example.svg/800px-C_Maze_Example.svg.png" width="600" alt="so_long Banner" />
+<img src="gif/final.gif" width="600" alt="Gameplay Demo" />
 
 ## About the Project
 
