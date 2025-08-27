@@ -6,7 +6,7 @@
 /*   By: pbongiov <pbongiov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:35:54 by pbongiov          #+#    #+#             */
-/*   Updated: 2025/08/18 19:25:17 by pbongiov         ###   ########.fr       */
+/*   Updated: 2025/08/27 20:29:19 by pbongiov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	row_and_col_len(t_game *game, char *filename)
 		error_msg(game);
 	s = get_next_line(fd);
 	if (!s)
-		exit_game(game);
+		error_msg(game);
 	game->map.width = ft_strlen(s);
 	while (s && s[0] != '\n')
 	{
